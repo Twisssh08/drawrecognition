@@ -28,20 +28,14 @@ def encode_image_to_base64(image_path):
 st.set_page_config(page_title='Tablero Inteligente')
 st.title('Tablero Inteligente')
 with st.sidebar:
-    st.subheader("Acerca de:")
-    st.subheader("En esta aplicación veremos la capacidad que ahora tiene una máquina de interpretar un boceto")
-st.subheader("Dibuja el boceto en el panel  y presiona el botón para analizarla")
-
-# Add canvas component
-#bg_image = st.sidebar.file_uploader("Cargar Imagen:", type=["png", "jpg"])
-# Specify canvas parameters in application
-drawing_mode = "freedraw"
-stroke_width = st.sidebar.slider('Selecciona el ancho de línea', 1, 30, 5)
-#stroke_color = '#FFFFFF' # Set background color to white
-#bg_color = '#000000'
-stroke_color = "#000000" 
-bg_color = '#FFFFFF'
-#realtime_update = st.sidebar.checkbox("Update in realtime", True)
+    st.subheader("Esta app adivinarà lo que dibujas...")
+    stroke_width = st.slider("Tamaño del pincel",1,30,15)
+  stroke_color = st.color_picker("Color","#FFFFFF", key = "pincel")
+  bg_color = st.color_picker("Color del fondo","#000000", key = "bg")  
+  drawing_mode = st.sidebar.selectbox(
+    "Herramienta de Dibujo: ",
+    ("freedraw","line","rect","circle","transform","polygon","point"),
+)st.subheader("Dibuja en el panel y presiona el botón de adivinar")
 
 
 # Create a canvas component
@@ -68,7 +62,7 @@ api_key = os.environ['OPENAI_API_KEY']
 # Initialize the OpenAI client with the API key
 client = OpenAI(api_key=api_key)
 
-analyze_button = st.button("Analiza la imagen", type="secondary")
+analyze_button = st.button("Adivinar", type="secondary")
 
 # Check if an image has been uploaded, if the API key is available, and if the button has been pressed
 if canvas_result.image_data is not None and api_key and analyze_button:
