@@ -35,6 +35,7 @@ with st.sidebar:
     drawing_mode = st.sidebar.selectbox(
     "Herramienta de Dibujo: ",
     ("freedraw","line","rect","circle","transform","polygon","point"),
+    )
 st.subheader("Dibuja en el panel y presiona el botón de adivinar")
 
 
