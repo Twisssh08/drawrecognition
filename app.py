@@ -30,9 +30,9 @@ st.title('Tablero Inteligente')
 with st.sidebar:
     st.subheader("Esta app adivinarà lo que dibujas...")
     stroke_width = st.slider("Tamaño del pincel",1,30,15)
-  stroke_color = st.color_picker("Color","#FFFFFF", key = "pincel")
-  bg_color = st.color_picker("Color del fondo","#000000", key = "bg")  
-  drawing_mode = st.sidebar.selectbox(
+    stroke_color = st.color_picker("Color","#FFFFFF", key = "pincel")
+    bg_color = st.color_picker("Color del fondo","#000000", key = "bg")  
+    drawing_mode = st.sidebar.selectbox(
     "Herramienta de Dibujo: ",
     ("freedraw","line","rect","circle","transform","polygon","point"),
 )st.subheader("Dibuja en el panel y presiona el botón de adivinar")
